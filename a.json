@@ -1,0 +1,15 @@
+{
+    "permissions": {
+        "allow": [
+            "Write(summary.md)"
+        ],
+        "deny": [
+            "Shell(rm)",
+            "Shell(npm)",
+            "Shell(git)",
+            "Shell(ls)",
+            "Read(**/*.*)",
+            "Write(**/*.*)"
+        ]
+    }
+}
