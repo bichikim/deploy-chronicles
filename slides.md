@@ -36,25 +36,6 @@ h2 {
 }
 </style>
 
-<style>
-.slidev-layout {
-  padding-bottom: 2rem !important;
-  margin-bottom: 1rem !important;
-}
-
-.slidev-page {
-  padding-bottom: 2rem !important;
-}
-
-.slidev-layout > * {
-  margin-bottom: 1rem;
-}
-
-.slidev-layout > *:last-child {
-  margin-bottom: 2rem;
-}
-</style>
-
 # 어쩌다 보니
 
 ## 웹개발팀 취합 배포 작업 개선한 건에 대하여
