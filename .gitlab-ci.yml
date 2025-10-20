@@ -1,0 +1,63 @@
+# see https://docs.gitlab.com/ci/yaml/includes/#override-included-configuration-values
+variables:
+  NOT_THING: nothing
+  DOCKER_DRIVER: overlay2
+
+include:
+  - apps/web-partners/.gitlab-ci.web-partners.yml
+  - apps/svelte-web/.gitlab-ci.yml
+  - apps/svelte-web/.gitlab-ci-ivi.yml
+  - apps/nuxt-web/.gitlab-ci.yml
+  - .gitlab-ci.packages.yml
+
+review:
+  image:
+    name: "gitlab/gitlab-runner:latest"
+    entrypoint: [""]
+  before_script:
+    # install nvm
+    - curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
+    # set nvm path
+    - |
+      export NVM_DIR="$HOME/.nvm"
+      [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+      [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+    # install node
+    - nvm install 22
+    # set node version
+    - nvm use 22
+    # install glab-cli
+    - curl -sL https://j.mp/glab-cli | sh
+    # login glab-cli
+    - glab auth login --hostname gitlab.wavve.com --token $GITLAB_TOKEN
+    # install safe-glab cli dependencies only
+    - npm install --prefix ./packages/safe-glab
+    # build safe-glab cli only
+    - npm run build --prefix ./packages/safe-glab
+    # install cursor-agent
+    - curl https://cursor.com/install -fsS | bash
+    # set cursor-agent path
+    - export PATH="$HOME/.local/bin:$PATH"
+    # set env Cursor API Key
+    - export CURSOR_API_KEY=$CURSOR_API_KEY
+    # set cursor-agent permissions
+    # - echo "$(cat .cursor/gitlab-cursor-cli.json)" > .cursor/cli.json
+  script:
+    - echo $CI_MERGE_REQUEST_DIFF_HEAD_SHA
+    - echo $CI_MERGE_REQUEST_DIFF_HEAD_SHA
+    - echo $CI_MERGE_REQUEST_DIFF_START_SHA
+    # Check cursor-agent version
+    - cursor-agent --version
+    # Get the diff contents from diff.patch to use in the cursor-agent
+    - glab mr diff $CI_MERGE_REQUEST_IID > diff.patch
+    # Analyze merge request changes and save the summary to summary.md
+    - cursor-agent -p "$(cat summary-cli-rule.md)"
+    # Post the analysis from summary.md as a message to the merge request
+    - node ./packages/safe-glab/dist/index.mjs notes -h gitlab.wavve.com -t $GITLAB_TOKEN -m $CI_MERGE_REQUEST_IID -p $CI_MERGE_REQUEST_PROJECT_ID --content-path ./summary.md
+    # Analyze merge request changes and save the review to review.json
+    - echo $(cat review.json)
+    # mr 을 리뷰한 결과 review.json 를 리뷰 메세지로 전송
+    - node ./packages/safe-glab/dist/index.mjs discussions -h gitlab.wavve.com -t $GITLAB_TOKEN -m $CI_MERGE_REQUEST_IID -p $CI_MERGE_REQUEST_PROJECT_ID --version-id $CI_MERGE_REQUEST_DIFF_ID --content-path ./review.json
+  rules:
+    # Condition: There must be a merge request ID (must be a merge request) and the target branch must be "dev"
+    - if: $CI_MERGE_REQUEST_IID != null && $CI_MERGE_REQUEST_TARGET_BRANCH_NAME == "dev"
