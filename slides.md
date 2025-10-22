@@ -142,6 +142,8 @@ backgroundSize: contain
 - AI 가 **요약을 MR 메세지로 작성**
 - 개선이 필요한 **코드의 위치**를 표기하고 **개선점 작성**
 
+<span v-mark.underline.orange class="absolute bottom-165px left-550px">ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ</span>
+
 ---
 
 # CloudFront 점진적 배포
@@ -258,24 +260,20 @@ layout: default
 
 - 별도작업 없이 늘 작동하는 디버깅 <br> QA / DEV 가 아닌 Production 환경에서는 자동으로 디버깅용 스크립트가 제거
 
-vite 설정에서 Production 빌드가 아니라면 html 내용 추가 하는 플러그인 작성
-```ts {*|1|6|*}
-      createHtmlPlugin({
-        inject: {
-          tags: [
-            {
-              attrs: {
-                src: 'https://dev-remote-inspector.wavve.com/target.js',
-                type: 'text/javascript',
-              },
-              injectTo: 'head',
-              tag: 'script',
-            },
-          ],
-        },
-      }),
+```ts {*|1|6}
+  createHtmlPlugin({
+    inject: {
+      tags: [
+        {
+          attrs: {
+            src: 'https://dev-remote-inspector.wavve.com/target.js',
+            type: 'text/javascript',
+          },
+          injectTo: 'head',
+          tag: 'script',
+        }...
 ```
-
+<!-- vite 설정에서 Production 빌드가 아니라면 html 내용 추가 하는 플러그인 작성 -->
 ---
 layout: default
 ---
@@ -599,7 +597,7 @@ layout: default
 ## 👮 보안 
 
 - AI는 생각지도 못한 명령을 실행 할 수도 있다
-- 토큰에 있는  Api 사용 권한은 모든 작업이 가능
+- 토큰에 지정된 Api 사용 권한은 GitLab 에서 할수 있는 대부분 작업이 가능
 
 <!--
 API 권한은 만능 권한 mr 삭제, 프로젝트 삭제 등 모든 권한이 다있다
@@ -662,7 +660,7 @@ layout: default
 class: slidev-layout
 ---
 
-# 감사합니다! 🙏
+# 감사합니다
 
 ## 질문이 있으시면 언제든 말씀해 주세요
 
