@@ -1,0 +1,22 @@
+<script setup lang="ts">
+import QrcodeVue from 'qrcode.vue'
+
+defineProps({
+    value: {
+        type: String,
+        required: true,
+    },
+    size: {
+        type: Number,
+        default: 100,
+    },
+    level: {
+        type: String,
+        default: 'L',
+    },
+})
+</script>
+
+<template>
+    <QrcodeVue :value="value"/>
+</template>

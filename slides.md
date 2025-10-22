@@ -28,6 +28,10 @@ mdc: true
   strong, h1, h2, h3, h4, h5 {
     color: white
   }
+  .slidev-code-wrapper span {
+    font-size: 1.3rem;
+    line-height: 1.7rem;
+  }
 </style>
 
 # 배포 프로세스 개선
@@ -47,6 +51,9 @@ backgroundSize: contain
 - **전체 사용자 영향** <br> 이슈 발생 시 모든 고객에게 100% 적용
 - **롤백 지연** <br> 더 빠른 롤백 시간으로 피해 최소화 필요
 
+<span v-mark.underline.orange class="absolute bottom-400px right-250px">ㅤㅤㅤㅤ</span>
+<span v-mark.underline.orange class="absolute bottom-190px right-180px">ㅤㅤㅤㅤ</span>
+
 ---
 layout: image-right
 image: ./images/page-3-img.png
@@ -60,6 +67,8 @@ backgroundSize: contain
 - **준비 시간 과다** <br> 디버깅 설정에 10-30분 소요
 - **저사양 디바이스 한계** <br> 디버깅 중 속도저하 및 프리징 발생
 
+<span v-mark.underline.orange class="absolute bottom-85px right-430px">ㅤㅤㅤㅤ</span>
+
 ---
 layout: image-right
 image: ./images/page-4-img.png
@@ -72,6 +81,8 @@ backgroundSize: contain
 - **리뷰 시간 과다**: GitLab MR 리뷰에 수십분 소요
 - **누락 발생**: 리뷰에서 체크 못한 부분들 빈번
 - **일관성 부족**: 리뷰어별 기준 차이
+
+<span v-mark.underline.orange class="absolute bottom-57px right-270px">ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ</span>
 
 ---
 layout: image-right
@@ -175,6 +186,8 @@ image: ./images/page-10-img1.png
 -->
 
 ---
+layout: default
+---
 
 # CloudFront 점진적 배포
 
@@ -186,6 +199,8 @@ image: ./images/page-10-img1.png
 점진적 배포 적용 후 GitLab 에서 가중치 % 기반 또는 헤더 기반 새 소스를 올리는 (1) 버켓과 실 프로덕트 새 소스코드를 올리는 (3) 버켓이 있고  가중치 % 기반 또는 헤더 기반에 따라 클라이언트를 (2) 로 보내거나 (4) 로 보내서 점진적 배포가 적용된다
 -->
 
+---
+layout: default
 ---
 
 # CloudFront 점진적 배포
@@ -207,39 +222,97 @@ image: ./images/page-10-img1.png
 -->
 
 ---
+layout: default
+---
 
 # Chii 원격 디버깅 툴
 
 ## 🚀 주요 기능
 
-- **웹 기반 인터페이스**: 브라우저에서 디바이스 목록 페이지에서 바로 접속
-- **원격 제어**: 디바이스 조작 및 테스트
-- **크로스 플랫폼**: 모든 디바이스에서 동일한 디버깅 경험
+- **웹 기반 인터페이스**: 브라우저에서 디바이스 목록 페이지에서 <span v-mark.underline.orange>바로 접속 </span>
+- **원격 제어**: <span v-mark.underline.orange>디바이스 조작 및 테스트</span>
+- **크로스 플랫폼**: 모든 디바이스에서 <span v-mark.underline.orange>동일한 디버깅 경험</span>
 
+<!--
+IVI 와 TV 디바이스마다 긴 디버깅 준비 시간 / 복잡하고  각각 다른 디버깅 방법 / 디버깅 런타임 성능 / 제공되는 디버거 버전이 달라서  등 디버깅 과정이 고통 스러웠다
+
+Chii 을 적용하니 
+
+디바이스 가능 목록에서  한번 클릭으로 바로 디버깅 시작
+모든 디바이스에서 원격제어 가능 
+모든 디바이스에서 동일 버전 동일 방법 동일 성능 으로 디버깅이 가능해 졌다
+-->
+
+---
+layout: default
 ---
 
 # Chii 원격 디버깅 툴
 
-## 🔧 기존 문제점 (계속)
+## 적용 사항 
 
-### 복잡하고 긴 접속 과정
-4. **포트 포워딩** (네트워크 설정)
-5. **방화벽 설정** (보안 정책)
+- 별도작업 없이 늘 작동하는 디버깅 <br> QA / DEV 가 아닌 Production 환경에서는 자동으로 디버깅용 스크립트가 제거
 
-## ✅ 해결책
-
-### 통합된 원격 디버깅 환경
-- **단일 인터페이스**로 모든 디바이스 제어
-- **웹 기반 접근** (브라우저만 있으면 OK)
-- **클라우드 연결** (인터넷만 있으면 접속)
-
-### 디바이스 무관한 디버깅
-- **Android, iOS, TV** 모두 동일한 방식
-- **저사양 디바이스**도 원격으로 디버깅 가능
-- **소프트웨어 업그레이드**와 무관하게 동작
+vite 설정에서 Production 빌드가 아니라면 html 내용 추가 하는 플러그인 작성
+```ts {*|1|6|*}
+      createHtmlPlugin({
+        inject: {
+          tags: [
+            {
+              attrs: {
+                src: 'https://dev-remote-inspector.wavve.com/target.js',
+                type: 'text/javascript',
+              },
+              injectTo: 'head',
+              tag: 'script',
+            },
+          ],
+        },
+      }),
+```
 
 ---
+layout: default
 ---
+
+# Chii 원격 디버깅 툴
+
+#### 디버깅 방법
+
+<img src="./images/page-11-img.png" />
+
+<!--
+디버깅 가능한 디바이스 목록이 페이지에가서
+inspect 를 클릭하면
+-->
+
+---
+layout: default
+---
+
+# Chii 원격 디버깅 툴
+
+#### 디버깅 화면
+
+<img src="./images/page-12-img.png" class="h-85%" />
+
+
+---
+layout: default
+---
+
+# Chii 원격 디버깅 툴
+
+#### 디버깅 컨트롤 영상
+
+<SlidevVideo autoplay controls autoreset="slide" class="h-85%">
+  <source src="./images/page-13-mov.mp4" type="video/mp4" />
+</SlidevVideo>
+
+---
+layout: default
+---
+
 # Chii 원격 디버깅 툴
 
 ## 🎯 적용 결과
@@ -253,60 +326,311 @@ image: ./images/page-10-img1.png
 | 디버깅 가능 디바이스 목록 | X | O |
 
 ---
+layout: default
+---
+
 # Chii 원격 디버깅 툴
 
 ## 추가 개선 사항
 
-- IOS, Android webview 에도 적용
-- Chii 버전 자동 업데이트 기능 추가
+- IOS, Android webview 적용
+- Chii 버전 자동 업데이트 기능
 
 ---
-class: slidev-layout
+layout: default
 ---
 
-# AI MR 요약 / 리뷰
+# Cursor CLI x GitLab CI/CD
 
-## 🤔 왜 AI CLI tool이 필요한가?
+## 🤔 왜 Cursor CLI ?
 
-### 기존 MR 리뷰의 문제점
-- **리뷰어 부족**: 팀원 수 대비 MR 양 과다
-- **리뷰 시간**: 평균 2-3시간 소요
-- **일관성 부족**: 리뷰어별 기준 차이
-- **지연 발생**: 리뷰 대기로 인한 개발 지연
+Model 이 `auto` 면 <span v-mark.underline.orange> 무제한 </span>  사용 가능
 
-### AI 도구의 장점
-- **24/7 자동화**: 언제든지 즉시 리뷰
-- **일관된 기준**: 동일한 품질 기준 적용
-- **빠른 피드백**: 몇 분 내 리뷰 완료
-- **개발자 부담 감소**: 반복 작업 자동화
+<v-click>
+다만 응답 <strong>퀄리티</strong>가 각 Job 마다 조금식 다른 문제가 있다 <span class="font-size-10">🤦</span>
+</v-click>
 
 ---
-class: slidev-layout
+layout: default
 ---
 
-# AI MR 요약 / 리뷰 (계속)
+# Cursor CLI x GitLab CI/CD
 
-## 🚀 GitLab CI/CD와의 만남
+### 커서에게 프롬프트 전달
+````md magic-move {lines: true}
 
-### 자동 MR 분석
-```yaml
+```yaml {*}
+# GitLab CI/CD 파이프라인에서 자동 실행
+when: merge_request
+```
+
+```yaml {4}
+# GitLab CI/CD 파이프라인에서 자동 실행
+when: merge_request
+script:
+  - cursor-agent 
+```
+
+```yaml {4}
 # GitLab CI/CD 파이프라인에서 자동 실행
 when: merge_request
 script:
   - cursor-agent -p "$(glab mr diff $CI_MERGE_REQUEST_IID)"
 ```
 
-### 변경사항 요약 생성
-- **코드 변경사항** 자동 분석
-- **영향도 평가** (High/Medium/Low)
-- **테스트 케이스** 제안
-- **보안 이슈** 검토
+```yaml {5|6-7}
+# GitLab CI/CD 파이프라인에서 자동 실행
+when: merge_request
+script:
+  - cursor-agent -p "diff \n\n $(glab mr diff $CI_MERGE_REQUEST_IID)
+  \n 요약 하여 `./summary.md` 에 결과 저장
+  \n 리뷰 하여 `./review.json` 에 결과 저장
+  "
+```
+
+````
+
+<!--
+실제 프롬프트는 좀더 상세한 프롬프트 이지만 간략하게 보면
+
+머지때 커서 CLI 에 MR diff 내용을 넣고 요약과 리뷰 내용을 각각 summary.md review.json 에 저장
+
+$CI_MERGE_REQUEST_IID 등은 gitlab CI/CD 내장 변수 이거나 직접 변수로 지정한 변수
+-->
 
 ---
-class: slidev-layout
+
+# Cursor CLI x GitLab CI/CD
+
+### 만들어진 내용 MR에 작성
+```yaml {2|3-8|9-13}
+script:
+  - cursor-agent -p ..."
+   # MR에 리뷰 작성 
+  - |
+    safe-glab discussions -t $GITLAB_TOKEN -m $CI_MERGE_REQUEST_IID
+     -p $CI_MERGE_REQUEST_PROJECT_ID -h gitlab.wavve.com
+     --version-id $CI_MERGE_REQUEST_DIFF_ID
+     --content-path ./review.json
+  # MR에 요약 작성   
+  - |
+    safe-glab notes -t $GITLAB_TOKEN -m $CI_MERGE_REQUEST_IID
+     -p $CI_MERGE_REQUEST_PROJECT_ID -h gitlab.wavve.com
+     --content-path ./summary.md
+```
+
+<!--
+파일로 저장 하는 이유는 명확하게 늘 같은 동작 메세지 작성 리뷰 작성 명령을 직접 만든 명령어 셋으로  summary.md review.json 파일을 읽어 처리 하기 위해
+-->
+
+
+---
+layout: default
 ---
 
-# AI MR 요약 / 리뷰
+# Cursor CLI x GitLab CI/CD
+
+### 추가로 프롬프트에 JSON 포맷을 전달
+
+```text
+JSON 포맷은 아래 형태로 작성 한다
+[
+  {
+    // {string} (required) review message
+    "body": "대상에 대한 리뷰 메세지 1",
+    "position": {
+      // {string} diff old file path from the "./diff.patch" (required)
+      "oldPath": "/path/to/file1.js",
+      // {string} diff new file path from the "./diff.patch" (required)
+      "newPath": "/path/to/file1.js",
+      // {number} review target diff line number" (optional)
+      "newLine": 123,
+      "oldLine": 123
+    }...
+```
+
+---
+layout: default
+---
+
+# Cursor CLI x GitLab CI/CD
+
+### 프롬프트 매개변수 길이 문제
+````md magic-move {lines: true}
+
+```yml {0|*}
+  script:
+    - cursor-agent -p "diff \n\n $(glab mr diff $CI_MERGE_REQUEST_IID) ... "
+```
+
+```yml
+  script:
+    - glab mr diff $CI_MERGE_REQUEST_IID > diff.patch
+    - cursor-agent -p "diff \n\n $(glab mr diff $CI_MERGE_REQUEST_IID) ... "
+```
+
+```yml
+  script:
+    - glab mr diff $CI_MERGE_REQUEST_IID > diff.patch
+    - cursor-agent -p "diff \n\n `./diff.patch` 파일을 읽어서 ... "
+```
+
+````
+
+<!--
+diff 내용은 상당히 길어 Cursor cli 매개 변수 길이 제한에 걸린다
+-->
+
+---
+layout: default
+---
+
+# Cursor CLI x GitLab CI/CD
+
+### 라인 번호를 잘 알려주지 못하는 문제
+
+```text {0|*}
+Rules:
+- Base on +newStart in the hunk header.
+- Initialize currentLine = newStart.
+- Scan the hunk body top → bottom:
+  - Lines starting with ' ' (context): currentLine += 1
+  - Lines starting with '+' (added):   currentLine += 1
+  - Lines starting with '-' (removed): no change
+- Ignore file headers (---/+++), hunk headers (@@), and "\ No newline..." lines.
+- If multiple hunks exist, only calculate within the hunk that contains the target code.
+- If not found, return "NOT FOUND".
+
+... 중략
+```
+
+<!--
+라인 번호 계산 방법을 알려주어 해결
+-->
+
+---
+layout: default
+---
+
+# Cursor CLI x GitLab CI/CD
+
+### 그럼에도 불구하고 라인번호를 잘못 적을 경우
+
+<span>post-discussion.ts</span>
+```ts {*|0}{at:0}
+function postDiscussions () {
+  ...
+  .catch(retryDiscussionWithFileInfo({...})
+}
+```
+<span>retry-discussion-with-file-info.ts</span>
+```ts {*|5}{at:0}
+function retryDiscussionWithFileInfo (payload) {
+  ...
+  return axios.post(..., {
+    body: `${payload.body} \n\n 
+    [${newPath}${position.newLine ? `_${position.newLine}` : ''}](${lineCodeUrl})`
+  })
+}
+```
+
+<!--
+파일 위치는 AI 가 정확히 작성하기 때문에 파일 위치링크를 추가하고 리뷰 작성
+-->
+
+---
+layout: default
+---
+
+# Cursor CLI x GitLab CI/CD
+
+### 프롬프트가 너무 길어 yml 파일 가독성 문제
+
+````md magic-move {lines: true}
+```yml {0|*}
+  script:
+    - cursor-agent -p "diff \n\n $(glab mr diff $CI_MERGE_REQUEST_IID) ... 
+      ...
+      ...
+      ...
+      ...
+      ...
+      ...
+      ...
+      ...
+      ...
+    "
+```
+
+```yml
+  script:
+    - cursor-agent -p "$(cat summary-cli-rule.md)"
+```
+````
+
+<!--
+프롬프트를 파일에 작성하고 그걸 CLI 프롬프트로 매개변수로 주입
+-->
+
+---
+layout: default
+---
+
+# Cursor CLI x GitLab CI/CD
+
+### 적용된 화면
+
+<div class="overflow-scroll w-full h-full">
+  <img src="./images/page-14-img.png" class="w-140% max-w-140%" />
+</div>
+
+---
+layout: default
+---
+
+
+# Cursor CLI x GitLab CI/CD
+
+## 👮 보안 
+
+- AI는 생각지도 못한 명령을 실행 할 수도 있다
+- 토큰에 있는  Api 사용 권한은 모든 작업이 가능
+
+<!--
+API 권한은 만능 권한 mr 삭제, 프로젝트 삭제 등 모든 권한이 다있다
+AI 가 치명적인 명령으로 문제를 만들 수 있기때문에 할 수 있는 일에 제약을 두어야 한다
+-->
+
+---
+
+# Cursor CLI x GitLab CI/CD
+
+#### Cursor 가 사용할 수 있는 명령을 권한을 제어하여 보안 적용
+
+```json
+{
+  "permissions": {
+    "allow": [
+      "Write(summary.md)",
+      "Write(./summary.md)",
+      "Write(review.json)",
+      "Write(./review.json)",
+      "Read(diff.txt)",
+      "Read(./diff.txt)"
+    ],
+    "deny": ["Shell(rm)", "Shell(npm)", "Shell(git)", "Shell(ls)", "Shell(glab)"]
+  }
+}
+```
+<!--
+명시되지 않은 것은 차단
+-->
+
+---
+layout: default
+---
+
+# Cursor CLI x GitLab CI/CD
 
 ## 📊 적용 결과
 
@@ -316,386 +640,18 @@ class: slidev-layout
 | 리뷰 일관성 | 50% | 85% |
 | 버그 발견률 | 50% | 80% |
 
----
-class: slidev-layout
----
-
-# AI MR 요약 / 리뷰
-
-## 💡 핵심 아이디어
-
-**AI가 능동적으로 MR 변화를 감지하고 자동으로 요약 및 리뷰를 수행**
-
-- **실시간 감지**: MR 생성 즉시 분석 시작
-- **지능적 요약**: 변경사항의 핵심만 추출
-- **맞춤형 피드백**: 프로젝트 특성에 맞는 리뷰
-- **학습 기능**: 과거 리뷰 패턴 학습으로 개선
 
 ---
-class: slidev-layout
+layout: default
 ---
 
-# AI MR 요약을 만들어 보자
+# Cursor CLI x GitLab CI/CD
 
-## 🛠️ 준비물
+## 추가 개선 사항
 
-### 필수 도구
-- **glab** (GitLab CLI tool) - GitLab과 상호작용
-- **Cursor CLI** (AI 코드 어시스턴트) - AI 분석 엔진
-- **GitLab Access tokens** - API 접근 권한
-- **Cursor API Key** - AI 서비스 접근
-- **.gitlab-ci.yml 파일** - CI/CD 파이프라인 설정
-
-### 시스템 요구사항
-- **GitLab Runner** (최신 버전)
-- **Docker** (컨테이너 실행 환경)
-- **네트워크 접근** (외부 API 호출)
-
----
-class: slidev-layout
----
-
-# AI MR 요약을 만들어 보자 (계속)
-
-## 📋 설정 단계
-
-### 1. GitLab 토큰 생성
-```bash
-# GitLab에서 Personal Access Token 생성
-# 권한: api, read_repository, write_repository
-```
-
-### 2. Cursor API 키 발급
-```bash
-# Cursor 웹사이트에서 API 키 발급
-# 사용량 제한 확인 필요
-```
-
-### 3. CI/CD 파이프라인 설정
-```yaml
-# .gitlab-ci.yml 파일에 review 스테이지 추가
-# 환경 변수 설정
-# 실행 조건 정의
-```
-
----
-class: slidev-layout
----
-
-# AI MR 요약을 만들어 보자 (계속)
-
-## 📋 설정 단계 (계속)
-
-### 4. 권한 및 보안 구성
-- **최소 권한 원칙** 적용
-- **API 키 암호화** 저장
-- **접근 로그** 모니터링
-
----
-class: slidev-layout
----
-
-# AI MR 요약을 만들어 보자 (계속)
-
-## ⚠️ 주의사항
-
-### 보안 고려사항
-- **API 키와 토큰**은 GitLab Variables에 안전하게 저장
-- **네트워크 보안** 설정 (방화벽, VPN)
-- **접근 권한** 최소화 (필요한 권한만 부여)
-
-### 성능 고려사항
-- **API 호출 제한** (Rate Limiting)
-- **응답 시간** 모니터링
-- **에러 처리** 로직 구현
-
----
-class: slidev-layout
----
-
-# GitLab CI/CD 파이프라인 구현
-
-## 🔧 스테이지 정의
-
-### 기본 설정
-```yaml
-review:
-  stage: review
-  image:
-    name: "gitlab/gitlab-runner:latest"
-    entrypoint: [""]
-```
-
-### 도구 설치 및 인증
-```yaml
-before_script:
-  # install glab-cli
-  - curl -sL https://j.mp/glab-cli | sh
-  # login glab-cli
-  - glab auth login --hostname gitlab.wavve.com --token $GITLAB_TOKEN
-```
-
----
-class: slidev-layout
----
-
-# GitLab CI/CD 파이프라인 구현 (계속)
-
-### AI 분석 실행
-```yaml
-script:
-  - glab --version
-  - echo $CI_MERGE_REQUEST_IID
-  # install cursor-agent
-  - curl https://cursor.com/install -fsS | bash
-  - export PATH="$HOME/.local/bin:$PATH"
-  - export CURSOR_API_KEY=$CURSOR_API_KEY
-```
-
----
-class: slidev-layout
----
-
-# GitLab CI/CD 파이프라인 구현 (계속)
-
-### 조건부 실행 로직
-```yaml
-- |
-  if [ -n "$CI_MERGE_REQUEST_IID" ] && [ "$CI_MERGE_REQUEST_TARGET_BRANCH_NAME" == "dev" ]; then
-    echo "CI_MERGE_REQUEST_IID is set to $CI_MERGE_REQUEST_IID and CI_MERGE_REQUEST_TARGET_BRANCH_NAME is set to $CI_MERGE_REQUEST_TARGET_BRANCH_NAME"
-    cursor-agent -p "$(glab mr diff $CI_MERGE_REQUEST_IID) @@Summarize the changes and save them to ./summary.md and end the conversation@@ @@If the response is repeated more than 5 times, the conversation must be ended@@"
-    glab mr note $CI_MERGE_REQUEST_IID -m "$(cat summary.md)"
-  else
-    echo "CI_MERGE_REQUEST_IID is not set or CI_MERGE_REQUEST_TARGET_BRANCH_NAME is not set to dev"
-  fi
-```
-
----
-class: slidev-layout
----
-
-# GitLab CI/CD 파이프라인 구현 (계속)
-
-## 🔑 핵심 기능
-
-### 자동 MR 감지
-- **MR 생성 시** 자동으로 파이프라인 실행
-- **dev 브랜치** 대상으로만 실행
-- **환경 변수** 자동 설정
-
-### AI 기반 변경사항 분석
-- **코드 diff** 자동 추출
-- **AI 분석** 요청 전송
-- **요약 생성** 및 저장
-
-### 자동 코멘트 생성
-- **분석 결과**를 MR에 자동 코멘트
-- **개발자 알림** 자동 발송
-- **이력 관리** 자동화
-
-## ⚡ 실행 조건
-
-### 브랜치 제한
-- **dev 브랜치**로의 MR만 대상
-- **다른 브랜치**는 실행하지 않음
-- **보호 브랜치** 설정과 연동
-
-### 실행 시점
-- **MR 생성** 시 자동 실행
-- **코드 푸시** 시 재실행
-- **수동 실행** 가능
-
-### AI 응답 제한
-- **최대 5회** 응답 시도
-- **타임아웃** 설정
-- **에러 처리** 로직
-
-
-
----
-class: slidev-layout
----
-
-# 보안 및 권한 관리
-
-## 🔐 권한 설정
-
-### GitLab 토큰 권한
-- **리포터 권한**으로 토큰 생성
-- **Analytics 권한** 모두 포함
-- **세밀한 권한 조정** 필요
-- **API 실행 권한** 최소화
-
-### 권한 매트릭스
-| 기능 | 권한 | 이유 |
-|------|------|------|
-| MR 읽기 | Reporter | 코드 변경사항 확인 |
-| 코멘트 작성 | Reporter | 분석 결과 전달 |
-| 이슈 생성 | Reporter | 문제점 보고 |
-
----
-class: slidev-layout
----
-
-# 보안 및 권한 관리 (계속)
-
-### 권한 매트릭스 (계속)
-| 기능 | 권한 | 이유 |
-|------|------|------|
-| 코드 수정 | ❌ | 보안상 위험 |
-
----
-class: slidev-layout
----
-
-# 보안 및 권한 관리 (계속)
-
-## 🛡️ 보안 조치
-
-### AI 오동작 방지
-- **명령어 제한**: 허용된 명령어만 실행
-- **glab 직접 실행** 대신 래퍼 사용
-- **cil.json** 설정으로 제어
-- **GitLab Variables** 노출로 실시간 제어
-
----
-class: slidev-layout
----
-
-# 보안 및 권한 관리 (계속)
-
-### 보안 설정 예시
-```json
-{
-  "allowed_commands": [
-    "glab mr diff",
-    "glab mr note",
-    "cursor-agent"
-  ],
-  "restricted_commands": [
-    "rm -rf",
-    "sudo",
-    "chmod"
-  ],
-  "timeout": 300,
-  "max_retries": 3
-}
-```
-
----
-class: slidev-layout
----
-
-# 보안 및 권한 관리 (계속)
-
-## ⚠️ 중요 보안 고려사항
-
-### AI 오동작 방지
-- **명령어 화이트리스트** 적용
-- **위험한 명령어** 차단
-- **실행 권한** 최소화
-- **로그 모니터링** 강화
-
-### 제어 방법
-- **GitLab Variables**를 통한 실시간 제어
-- **파이프라인 중단** 기능
-- **권한 변경** 즉시 적용
-- **접근 로그** 추적
-
----
-class: slidev-layout
----
-
-# 보안 및 권한 관리 (계속)
-
-## 📊 보안 효과
-
-| 항목 | 기존 | 개선 후 | 개선율 |
-|------|------|---------|--------|
-| 보안 위험도 | High | Low | **80% 감소** |
-| 권한 관리 | 수동 | 자동 | **100% 자동화** |
-| 모니터링 | 부분적 | 전체 | **100% 커버리지** |
-| 대응 시간 | 30분 | 5분 | **83% 단축** |
-
----
-class: slidev-layout
----
-
-# 결과 및 향후 계획
-
-## 📊 적용 결과
-
-### 정량적 성과
-| 항목 | 기존 | 개선 후 | 개선율 |
-|------|------|---------|--------|
-| 배포 안정성 | 85% | 98% | **13% 향상** |
-| 디버깅 효율성 | 70% | 95% | **25% 향상** |
-| MR 리뷰 시간 | 2-3시간 | 10-15분 | **90% 단축** |
-| 개발자 만족도 | 3.2/5 | 4.7/5 | **47% 향상** |
-
----
-class: slidev-layout
----
-
-# 결과 및 향후 계획 (계속)
-
-### 정성적 효과
-- **개발자 생산성** 크게 향상
-- **코드 품질** 일관성 확보
-- **배포 위험도** 대폭 감소
-- **팀 협업** 효율성 증대
-
----
-class: slidev-layout
----
-
-# 결과 및 향후 계획 (계속)
-
-## 🚀 향후 계획
-
-### 단기 계획 (3개월)
-- **모니터링 대시보드** 구축
-- **AI 모델 정확도** 개선
-- **보안 정책** 고도화
-- **사용자 교육** 진행
-
-### 중기 계획 (6개월)
-- **다른 팀 확산** 적용
-- **고급 AI 기능** 추가
-- **성능 최적화** 진행
-- **사용자 피드백** 반영
-
----
-class: slidev-layout
----
-
-# 결과 및 향후 계획 (계속)
-
-### 장기 계획 (1년)
-- **전사 표준** 도구로 확산
-- **AI 모델 커스터마이징**
-- **다른 프로젝트** 적용
-- **국제 컨퍼런스** 발표
-
----
-class: slidev-layout
----
-
-# 결과 및 향후 계획 (계속)
-
-## 🎯 기대 효과
-
-### 비용 절감
-- **개발 시간** 40% 단축
-- **인력 비용** 절감
-- **인프라 비용** 최적화
-- **유지보수 비용** 감소
-
-### 품질 향상
-- **버그 발생률** 50% 감소
-- **코드 품질** 일관성 확보
-- **보안 취약점** 조기 발견
-- **사용자 만족도** 향상
+- **응답 시간** 타임 아웃
+- 도커 이미지 최적화
+- **AI 결과 에러 검출** 하여 재 요약 / 리뷰 시행되도록 추가
 
 ---
 class: slidev-layout
@@ -706,11 +662,8 @@ class: slidev-layout
 ## 질문이 있으시면 언제든 말씀해 주세요
 
 ### 연락처
-- **이메일**: [개발팀 이메일]
-- **슬랙**: #웹개발팀 채널
-- **GitLab**: 프로젝트 이슈 등록
+- **이메일**: bichi@wavve.com
 
 ### 추가 자료
-- **기술 문서**: [내부 위키 링크]
-- **소스 코드**: [GitLab 저장소 링크]
-- **데모 영상**: [시연 영상 링크]
+- **이 슬라이드** <br>
+<QrCode value="???" />
