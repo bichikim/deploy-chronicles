@@ -38,6 +38,11 @@ mdc: true
 
 업무를 잘하려다 보니...🤓
 
+<div class="w-full flex justify-end items-end gap-5">
+  <span class="font-size-6">이 프레젠테이션 문서 주소 --></span>
+  <QrCode value="https://deploy-chronicles.vercel.app" size="240" />
+</div>
+
 ---
 layout: image-right
 image: /images/page-2-img.png
@@ -666,4 +671,4 @@ class: slidev-layout
 
 ### 추가 자료
 - **이 슬라이드** <br>
-<QrCode value="???" />
+<QrCode value="https://deploy-chronicles.vercel.app" size="200" />

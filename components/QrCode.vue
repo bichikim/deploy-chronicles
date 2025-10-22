@@ -18,5 +18,5 @@ defineProps({
 </script>
 
 <template>
-    <QrcodeVue :value="value"/>
+    <QrcodeVue :value="value" :size="size" :image-settings="{width: 50, height: 50, src: '/images/wavve.png', excavate: true}" />
 </template>
