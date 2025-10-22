@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Write(summary.md)",
+      "Write(./summary.md)",
+      "Write(review.json)",
+      "Write(./review.json)",
+      "Read(diff.txt)",
+      "Read(./diff.txt)"
+    ],
+    "deny": ["Shell(rm)", "Shell(npm)", "Shell(git)", "Shell(ls)"]
+  }
+}

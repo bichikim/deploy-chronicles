@@ -1,68 +1,130 @@
 ---
 theme: default
-title: 전생 했더니 웹개발팀 취합 배포 작업 개선 한 건에 대하여
-background: ./images/page-1-background.png
+title: 배포 프로세스 개선
 backgroundSize: right top
 mdc: true
-class: slidev-layout
 ---
-<style scoped>
-h1 {
-  color: #d69b37;
-  background-color:#4c1e10;
-  border-radius: 1rem;
-  padding: .5rem;
-  border: 2px #5c2912 solid;
-  outline: 3px #38251d solid;
-  width: 50%;
-  position: absolute;
-  right: 3.5rem;
-  top: 3rem;
-  text-align: center;
-  font-size: 3.5rem;
-  line-height: 4rem;
-  font-weight: 900;
-}
-h2 {
-  color: #d69b37;
-  text-shadow: 2px 2px 4px #38251d, 0 0 2px #000;
-  width: 60%;
-  word-break: keep-all;
-  font-size: 3.5rem;
-  line-height: 3.5rem;
-  position: absolute;
-  left: 26rem;
-  top: 10rem;
-}
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap');
+  
+  body {
+    background-color: black;
+    font-family: "Noto Sans KR", "Pretendard Variable", sans-serif;
+  }
+  li, span {
+    color: #f5f5f5;
+    font-weight: 400;
+  }
+  .slidev-layout strong {
+    font-weight: 700;
+  }
+  .slidev-layout h2 {
+    line-height: 3.5rem;
+  }
+  .slidev-layout h3 {
+    line-height: 3rem;
+  }
+  strong, h1, h2, h3, h4, h5 {
+    color: white
+  }
 </style>
 
-# 어쩌다 보니
+# 배포 프로세스 개선
 
-## 웹개발팀 취합 배포 작업 개선한 건에 대하여
+업무를 잘하려다 보니...🤓
 
 ---
 layout: image-right
-image: ./images/page-1-sub.png
-class: slidev-layout
+image: ./images/page-2-img.png
+backgroundSize: contain
 ---
-# 무엇을 개선 하였나?
 
-## 🚀 주요 개선사항
+# 배포 프로세스 효율 문제
 
-### 1. AWS CloudFront 점진적 배포
-- **빠른 롤백** (몇 초 내)
-- **안전한 배포** (트래픽 기반)
-- **프라이빗 환경 테스트** (100% 실제 환경)
+## 🚀 배포 위험도 관리
+- **QA vs Production** <br> 드물게 미묘한 환경 차이로 QA에서 발견 못한 이슈
+- **전체 사용자 영향** <br> 이슈 발생 시 모든 고객에게 100% 적용
+- **롤백 지연** <br> 더 빠른 롤백 시간으로 피해 최소화 필요
 
-### 2. Chii 원격 디버깅 툴
-- **통합 디버깅 환경** (모든 디바이스)
-- **웹 기반 인터페이스** (접근성 향상)
-- **디바이스 호환성** (저사양 포함)
+---
+layout: image-right
+image: ./images/page-3-img.png
+backgroundSize: contain
+---
 
-### 3. AI MR 요약 / 리뷰
-- **자동화된 코드 리뷰** (24/7)
-- **GitLab CI/CD 통합** (능동적 대응)
-- **개발자 부담 감소** (리뷰 시간 50% 단축)
+# 배포 프로세스 효율 문제
+
+## 🔧 디버깅 환경의 복잡성
+- **디바이스별 다른 방법** <br> IVI, TV 디바이스마다 제조사/버전별 다른 디버깅
+- **준비 시간 과다** <br> 디버깅 설정에 10-30분 소요
+- **저사양 디바이스 한계** <br> 디버깅 중 속도저하 및 프리징 발생
+
+---
+layout: image-right
+image: ./images/page-4-img.png
+backgroundSize: contain
+---
+
+# 배포 프로세스 효율 문제
+
+## 📝 코드 리뷰의 비효율성
+- **리뷰 시간 과다**: GitLab MR 리뷰에 수십분 소요
+- **누락 발생**: 리뷰에서 체크 못한 부분들 빈번
+- **일관성 부족**: 리뷰어별 기준 차이
+
+---
+layout: image-right
+image: ./images/page-5-img.png
+backgroundSize: auto
+---
+
+<style scoped>
+  .slidev-page > div {
+    overflow: visible;
+    white-space: nowrap;
+  }
+</style>
+
+# 무엇을 어떻게 개선?
+
+## 🚀 AWS CloudFront 점진적 배포
+- **빠른 롤백** 몇 초 내
+- **이슈시 적은 영향** 트래픽 기반 / 헤더 기반
+- 프로덕트 환경에서 최소 리스크로 테스트 가능
+
+---
+layout: image-right
+image: ./images/page-6-img.png
+backgroundSize: contain
+---
+
+# 무엇을 어떻게 개선?
+
+## 🐛 Chii 원격 디버깅 툴
+- **모든 디바이스** 에서 **같은 디버깅 방법**
+- **모든 디바이스** 에서 브라우저 개발자 도구와 **같은 환경**
+- **모든 디바이스** 에서 **최신 디버깅** 툴 유지
+
+---
+layout: image-right
+image: ./images/page-7-img.png
+backgroundSize: contain
+---
+
+# 무엇을 어떻게 개선?
+
+<style scoped>
+  .slidev-page > div {
+    overflow: visible;
+    white-space: nowrap;
+  }
+</style>
+
+## 🤖 Cursor CLI x GitLab CI/CD
+- dev 브랜치 MR 에 의한 **자동화된 코드 리뷰**
+- AI 가 **요약을 MR 메세지로 작성**
+- 개선이 필요한 **코드의 위치**를 표기하고 **개선점 작성**
 
 ---
 class: slidev-layout
@@ -73,45 +135,47 @@ class: slidev-layout
 ## 🎯 장점
 
 ### 빠른 롤백 (몇 초 내)
-- **기존**: 전체 배포 → 문제 발생 → 수동 롤백 (10-15분)
+- **기존**: 전체 배포 → 문제 발생 → 수동 롤백 (1-2분)
 - **개선**: 점진적 배포 → 문제 감지 → 자동 롤백 (5초 이내)
 
 ### 이슈시 적은 영향
-- **트래픽 분할**: 5% → 25% → 50% → 100%
+- **트래픽 분할**: 15% → 100%
 - **문제 발생 시**: 해당 % 사용자만 영향
 - **빠른 대응**: 즉시 배포 중단 가능
+
+### 프로덕션 환경에서 최종 검토
+- **특정 클라이언트** 만 **새로운 버전** 사용가능 <br> 헤더 기반으로 특정
 
 ---
 class: slidev-layout
 ---
 
-# CloudFront 점진적 배포 (계속)
+# CloudFront 점진적 배포
 
 ## ⚠️ 우려 사항
 
 ### API 하위 호환성
-- **기존 API 버전 유지** 필요
-- **점진적 마이그레이션** 전략
-- **백워드 호환성** 검증
+- **기존 API 버전 정상 작동 유지** 필요
 
 ### 특정 % 접속 방법 제한
-- **개발자 테스트** 어려움
-- **QA 환경** 별도 구성 필요
-- **모니터링** 강화 필요
+- **개발자 테스트** 어려움 <br> 헤더 기반으로 설정 변경해서 확인
+
+### 세션 유지 길이
+- 세션 만료로 오작동이 될 가능성 <br> % 기반 접속일 경우 세션 유지기간 최대(1시간인가??)
 
 ---
 class: slidev-layout
 ---
 
-# CloudFront 점진적 배포 (계속)
+# CloudFront 점진적 배포
 
-## 📊 실제 적용 결과
+## 📊 적용 결론
 
-| 항목 | 기존 | 개선 후 | 개선율 |
-|------|------|---------|--------|
-| 롤백 시간 | 10-15분 | 5초 이내 | **99% 단축** |
-| 서비스 중단 | 전체 사용자 | 일부 사용자 | **95% 감소** |
-| 배포 안정성 | 85% | 98% | **13% 향상** |
+| 항목 | 기존 | 개선 후
+|------|------|---------|
+| 롤백 시간 | 1-2분 | 5초 이내 |
+| 서비스 중단 | 전체 사용자 | 일부 사용자 |
+| 안전한 프로덕션 Live 검증 | 불가능 | 가능 |
 
 ---
 class: slidev-layout
@@ -136,7 +200,20 @@ class: slidev-layout
 class: slidev-layout
 ---
 
-# Chii 원격 디버깅 툴 (계속)
+# Chii 도구 특징
+
+## 🚀 주요 기능
+
+- **웹 기반 인터페이스**: 브라우저에서 바로 접속
+- **실시간 로그**: 디바이스 상태 실시간 모니터링
+- **원격 제어**: 디바이스 조작 및 테스트
+- **크로스 플랫폼**: 모든 디바이스에서 동일한 경험
+
+---
+class: slidev-layout
+---
+
+# Chii 원격 디버깅 툴
 
 ## 🔧 기존 문제점 (계속)
 
@@ -156,27 +233,20 @@ class: slidev-layout
 - **저사양 디바이스**도 원격으로 디버깅 가능
 - **소프트웨어 업그레이드**와 무관하게 동작
 
-## 🎯 적용 효과
-
-| 항목 | 기존 | 개선 후 | 개선율 |
-|------|------|---------|--------|
-| 디버깅 설정 시간 | 30-60분 | 5분 | **90% 단축** |
-| 디바이스 호환성 | 60% | 100% | **40% 향상** |
-| 디버깅 성공률 | 70% | 95% | **25% 향상** |
-| 개발자 만족도 | 3.2/5 | 4.7/5 | **47% 향상** |
-
 ---
-class: slidev-layout
 ---
+# Chii 원격 디버깅 툴
 
-# Chii 도구 특징
+## 🎯 적용 결과
 
-## 🚀 주요 기능
+| 항목 | 기존 | 개선 후
+|------|------|---------|
+| 디버깅 설정 시간 | 10-30분 | 10초 |
+| 디버깅 디바이스 전환 속도 | 10-30분 | 3초 |
+| 디버깅 같은 방법 갯수  | 1 / 10 | 10 / 10 |
+| 디버깅 성능 저하 갯수 | 2 / 10 | 0 / 10 |
+| 디버깅 가능 디바이스 목록 | X | O |
 
-- **웹 기반 인터페이스**: 브라우저에서 바로 접속
-- **실시간 로그**: 디바이스 상태 실시간 모니터링
-- **원격 제어**: 디바이스 조작 및 테스트
-- **크로스 플랫폼**: 모든 디바이스에서 동일한 경험
 
 ---
 class: slidev-layout
@@ -224,22 +294,21 @@ script:
 class: slidev-layout
 ---
 
-# AI MR 요약 / 리뷰 (계속)
+# AI MR 요약 / 리뷰
 
 ## 📊 적용 결과
 
-| 항목 | 기존 | 개선 후 | 개선율 |
-|------|------|---------|--------|
-| 리뷰 시간 | 2-3시간 | 10-15분 | **90% 단축** |
-| 리뷰 일관성 | 60% | 95% | **35% 향상** |
-| 개발 속도 | 기준 | +40% | **40% 향상** |
-| 버그 발견률 | 70% | 90% | **20% 향상** |
+| 항목 | 기존 | 개선 후 |
+|------|------|---------|
+| 리뷰 시간 | 10-30분 | 5분 |
+| 리뷰 일관성 | 50% | 85% |
+| 버그 발견률 | 50% | 80% |
 
 ---
 class: slidev-layout
 ---
 
-# AI MR 요약 / 리뷰 (계속)
+# AI MR 요약 / 리뷰
 
 ## 💡 핵심 아이디어
 
