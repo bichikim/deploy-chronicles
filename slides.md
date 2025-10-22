@@ -44,6 +44,16 @@ mdc: true
 </div>
 
 ---
+layout: cover
+image: /images/page-2-img.png
+backgroundSize: contain
+---
+
+# 배포 프로세스 효율 문제
+
+느리고 느린 배포 프로세스
+
+---
 layout: image-right
 image: /images/page-2-img.png
 backgroundSize: contain
@@ -88,6 +98,17 @@ backgroundSize: contain
 - **일관성 부족**: 리뷰어별 기준 차이
 
 <span v-mark.underline.orange class="absolute bottom-57px right-270px">ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ</span>
+
+---
+layout: cover
+image: ./images/page-5-img.png
+backgroundSize: auto
+---
+
+# 무엇을 어떻게 개선?
+- 배포 위험도 관리
+- 디버깅 환경의 복잡성
+- 코드 리뷰의 비효율성
 
 ---
 layout: image-right
@@ -141,6 +162,19 @@ backgroundSize: contain
 - dev 브랜치 MR 에 의한 **자동화된 코드 리뷰**
 - AI 가 **요약을 MR 메세지로 작성**
 - 개선이 필요한 **코드의 위치**를 표기하고 **개선점 작성**
+
+<div class="absolute bottom-100px left-100px flex gap-4 items-center" v-motion
+    :initial="{ opacity: 0, y: 100 }"
+    :enter="{ opacity: 1, y: 0, scale: 1 }"
+    :variants="{ custom: { scale: 2 } }"
+    :hovered="{ scale: 1.2 }"
+    :delay="200"
+    :duration="1200"
+ >
+  <img src="/images/page-6-5-img.png" class="w-100px h-100px rotate--5">
+  <span class="text-size-10">X</span>
+  <img src="/images/page-6-6-img.png" class="w-100px h-100px rd-5 rotate-5">
+</div>
 
 <span v-mark.underline.orange class="absolute bottom-165px left-550px">ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ</span>
 
