@@ -40,7 +40,7 @@ mdc: true
 
 ---
 layout: image-right
-image: ./images/page-2-img.png
+image: /images/page-2-img.png
 backgroundSize: contain
 ---
 
@@ -179,7 +179,7 @@ image: ./images/page-10-img1.png
 
 #### 기존
 
-<img src="./images/page-10-img1.png" class="h-80%" />
+<img src="/images/page-10-img1.png" class="h-80%" />
 
 <!--
 기존에는 GitLab 에서 버킷에 소스코드가 배보 (1) 되고 클라이언트가 CloudFront 를 통해 소스코드를 가져간다
@@ -193,7 +193,7 @@ layout: default
 
 #### 변경 후
 
-<img src="./images/page-10-img2.png" class="h-85%" />
+<img src="/images/page-10-img2.png" class="h-85%" />
 
 <!--
 점진적 배포 적용 후 GitLab 에서 가중치 % 기반 또는 헤더 기반 새 소스를 올리는 (1) 버켓과 실 프로덕트 새 소스코드를 올리는 (3) 버켓이 있고  가중치 % 기반 또는 헤더 기반에 따라 클라이언트를 (2) 로 보내거나 (4) 로 보내서 점진적 배포가 적용된다
@@ -279,7 +279,7 @@ layout: default
 
 #### 디버깅 방법
 
-<img src="./images/page-11-img.png" />
+<img src="/images/page-11-img.png" />
 
 <!--
 디버깅 가능한 디바이스 목록이 페이지에가서
@@ -294,7 +294,7 @@ layout: default
 
 #### 디버깅 화면
 
-<img src="./images/page-12-img.png" class="h-85%" />
+<img src="/images/page-12-img.png" class="h-85%" />
 
 
 ---
@@ -306,7 +306,7 @@ layout: default
 #### 디버깅 컨트롤 영상
 
 <SlidevVideo autoplay controls autoreset="slide" class="h-85%">
-  <source src="./images/page-13-mov.mp4" type="video/mp4" />
+  <source src="/images/page-13-mov.mp4" type="video/mp4" />
 </SlidevVideo>
 
 ---
@@ -581,7 +581,7 @@ layout: default
 ### 적용된 화면
 
 <div class="overflow-scroll w-full h-full">
-  <img src="./images/page-14-img.png" class="w-140% max-w-140%" />
+  <img src="/images/page-14-img.png" class="w-140% max-w-140%" />
 </div>
 
 ---
