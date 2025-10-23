@@ -106,9 +106,12 @@ backgroundSize: auto
 ---
 
 # 무엇을 어떻게 개선?
-- 배포 위험도 관리
-- 디버깅 환경의 복잡성
-- 코드 리뷰의 비효율성
+###  배포 위험도 관리
+- AWS CloudFront 점진적 배포
+### 디버깅 환경의 복잡성
+- Chii 원격 디버깅 툴
+### 코드 리뷰의 비효율성
+- Cursor CLI x GitLab CI/CD
 
 ---
 layout: image-right
@@ -555,15 +558,13 @@ layout: default
 
 <span>post-discussion.ts</span>
 ```ts {*|0}{at:0}
-function postDiscussions () {
-  ...
+function postDiscussions () { ...
   .catch(retryDiscussionWithFileInfo({...})
 }
 ```
 <span>retry-discussion-with-file-info.ts</span>
-```ts {*|5}{at:0}
-function retryDiscussionWithFileInfo (payload) {
-  ...
+```ts {*|4}{at:0}
+function retryDiscussionWithFileInfo (payload) { ...
   return axios.post(..., {
     body: `${payload.body} \n\n 
     [${newPath}${position.newLine ? `_${position.newLine}` : ''}](${lineCodeUrl})`
