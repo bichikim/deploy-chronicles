@@ -36,22 +36,29 @@ mdc: true
 
 # 배포 프로세스 개선
 
-업무를 잘하려다 보니...🤓
-
 <div class="w-full flex justify-end items-end gap-5">
   <span class="font-size-6">이 프레젠테이션 문서 주소 --></span>
   <QrCode value="https://deploy-chronicles.vercel.app" size="240" />
 </div>
 
+<!--
+안녕 하세요 
+웨이브 웹개발팀 김비치 입니다
+
+이 발표 문서는 웹페이지로 서비스 되고 있습니다 
+qacode 를 찍어서 내용을 잘 보실수 있습니다 
+
+지난 1년동안 개발업무를 하면서 배포에 개선할 점이들이 보였고 그중 일부 개선한 부분을 발표하겠습니다
+-->
+
 ---
 layout: cover
-image: /images/page-2-img.png
-backgroundSize: contain
 ---
 
-# 배포 프로세스 효율 문제
+# 배포 프로세스 ~~행복~~ 효율 문제
+햄뽂 할 수 가 없다
 
-느리고 느린 배포 프로세스
+<img src="/images/page-2-1-img.png" class="absolute w-350px bottom-20px right-50px rd-5" />
 
 ---
 layout: image-right
@@ -59,9 +66,7 @@ image: /images/page-2-img.png
 backgroundSize: contain
 ---
 
-# 배포 프로세스 효율 문제
-
-## 🚀 배포 위험도 관리
+# 🚀 배포 위험도 관리
 - **QA vs Production** <br> 드물게 미묘한 환경 차이로 QA에서 발견 못한 이슈
 - **전체 사용자 영향** <br> 이슈 발생 시 모든 고객에게 100% 적용
 - **롤백 지연** <br> 더 빠른 롤백 시간으로 피해 최소화 필요
@@ -69,49 +74,12 @@ backgroundSize: contain
 <span v-mark.underline.orange class="absolute bottom-400px right-250px">ㅤㅤㅤㅤ</span>
 <span v-mark.underline.orange class="absolute bottom-190px right-180px">ㅤㅤㅤㅤ</span>
 
----
-layout: image-right
-image: ./images/page-3-img.png
-backgroundSize: contain
----
+<!--
+배포를 하고나서 생기는 문제들이 있었습니다 
 
-# 배포 프로세스 효율 문제
+qa 에서 검증을 완전히 끝냈지만 QA 와 Production 사이에 미묘한 환경 차이로 인해 QA 에서 발견 못한 이슈가 프로덕션에 배포 후 발견되는 일이 있었습니다
 
-## 🔧 디버깅 환경의 복잡성
-- **디바이스별 다른 방법** <br> IVI, TV 디바이스마다 제조사/버전별 다른 디버깅
-- **준비 시간 과다** <br> 디버깅 설정에 10-30분 소요
-- **저사양 디바이스 한계** <br> 디버깅 중 속도저하 및 프리징 발생
-
-<span v-mark.underline.orange class="absolute bottom-85px right-430px">ㅤㅤㅤㅤ</span>
-
----
-layout: image-right
-image: ./images/page-4-img.png
-backgroundSize: contain
----
-
-# 배포 프로세스 효율 문제
-
-## 📝 코드 리뷰의 비효율성
-- **리뷰 시간 과다**: GitLab MR 리뷰에 수십분 소요
-- **누락 발생**: 리뷰에서 체크 못한 부분들 빈번
-- **일관성 부족**: 리뷰어별 기준 차이
-
-<span v-mark.underline.orange class="absolute bottom-57px right-270px">ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ</span>
-
----
-layout: cover
-image: ./images/page-5-img.png
-backgroundSize: auto
----
-
-# 무엇을 어떻게 개선?
-###  배포 위험도 관리
-- AWS CloudFront 점진적 배포
-### 디버깅 환경의 복잡성
-- Chii 원격 디버깅 툴
-### 코드 리뷰의 비효율성
-- Cursor CLI x GitLab CI/CD
+-->
 
 ---
 layout: image-right
@@ -126,100 +94,16 @@ backgroundSize: auto
   }
 </style>
 
-# 무엇을 어떻게 개선?
-
-## 🚀 AWS CloudFront 점진적 배포
+# 🚀 AWS CloudFront 점진적 배포 적용
 - **빠른 롤백** 몇 초 내
 - **이슈시 적은 영향** 트래픽 기반 / 헤더 기반
 - 프로덕트 환경에서 최소 리스크로 테스트 가능
 
 ---
-layout: image-right
-image: ./images/page-6-img.png
-backgroundSize: contain
----
-
-# 무엇을 어떻게 개선?
-
-## 🐛 Chii 원격 디버깅 툴
-- **모든 디바이스** 에서 **같은 디버깅 방법**
-- **모든 디바이스** 에서 브라우저 개발자 도구와 **같은 환경**
-- **모든 디바이스** 에서 **최신 디버깅** 툴 유지
-
----
-layout: image-right
-image: ./images/page-7-img.png
-backgroundSize: contain
----
-
-# 무엇을 어떻게 개선?
-
-<style scoped>
-  .slidev-page > div {
-    overflow: visible;
-    white-space: nowrap;
-  }
-</style>
-
-## 🤖 Cursor CLI x GitLab CI/CD
-- dev 브랜치 MR 에 의한 **자동화된 코드 리뷰**
-- AI 가 **요약을 MR 메세지로 작성**
-- 개선이 필요한 **코드의 위치**를 표기하고 **개선점 작성**
-
-<div class="absolute bottom-100px left-100px flex gap-4 items-center" v-motion
-    :initial="{ opacity: 0, y: 100 }"
-    :enter="{ opacity: 1, y: 0, scale: 1 }"
-    :variants="{ custom: { scale: 2 } }"
-    :hovered="{ scale: 1.2 }"
-    :delay="200"
-    :duration="1200"
- >
-  <img src="/images/page-6-5-img.png" class="w-100px h-100px rd-7 rotate--5 shadow-xl">
-  <span class="text-size-10">X</span>
-  <img src="/images/page-6-6-img.png" class="w-100px h-100px rd-7 rotate-5 shadow-xl">
-</div>
-
-<span v-mark.underline.orange class="absolute bottom-165px left-550px">ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ</span>
-
----
-
-# CloudFront 점진적 배포
-
-## 🎯 장점
-
-### 빠른 롤백 (몇 초 내)
-- **기존**: 전체 배포 → 문제 발생 → 수동 롤백 (1-2분)
-- **개선**: 점진적 배포 → 문제 감지 → 자동 롤백 (5초 이내)
-
-### 이슈시 적은 영향
-- **트래픽 분할**: 15% → 100%
-- **문제 발생 시**: 해당 % 사용자만 영향
-- **빠른 대응**: 즉시 배포 중단 가능
-
-### 프로덕션 환경에서 최종 검토
-- **특정 클라이언트** 만 **새로운 버전** 사용가능 <br> 헤더 기반으로 특정
-
----
----
-
-# CloudFront 점진적 배포
-
-## ⚠️ 우려 사항
-
-### API 하위 호환성
-- **기존 API 버전 정상 작동 유지** 필요
-
-### 특정 % 접속 방법 제한
-- **개발자 테스트** 어려움 <br> 헤더 기반으로 설정 변경해서 확인
-
-### 세션 유지 길이
-- 세션 만료로 오작동이 될 가능성 <br> % 기반 접속일 경우 세션 유지기간 최대(1시간인가??)
-
----
 image: ./images/page-10-img1.png
 ---
 
-# CloudFront 점진적 배포
+# 🚀 CloudFront 점진적 배포
 
 #### 기존
 
@@ -233,7 +117,7 @@ image: ./images/page-10-img1.png
 layout: default
 ---
 
-# CloudFront 점진적 배포
+# 🚀 CloudFront 점진적 배포
 
 #### 변경 후
 
@@ -244,18 +128,34 @@ layout: default
 -->
 
 ---
+title: CloudFront 점진적 배포
 layout: default
 ---
 
-# CloudFront 점진적 배포
-
-## 📊 적용 결론
+# 📊 적용 성과
 
 | 항목 | 기존 | 개선 후
 |------|------|---------|
 | 롤백 시간 | 1-2분 | 5초 이내 |
 | 이슈로 서비스 문제 범위 | 전체 사용자 | 일부 사용자 |
 | 안전한 프로덕션 Live 검증 | 불가능 | 가능 |
+
+---
+title: CloudFront 점진적 배포
+layout: default
+---
+
+# ⚠️ 우려 사항
+
+### API 하위 호환성
+- **기존 API 버전 정상 작동 유지** 필요
+
+### 특정 % 접속 방법 제한
+- **개발자 테스트** 어려움 <br> 헤더 기반으로 설정 변경해서 확인
+
+### 세션 유지 길이
+- 세션 만료로 오작동이 될 가능성 <br> % 기반 접속일 경우 세션 유지기간 최대(1시간인가??)
+
 
 <!--
 트레픽 제어로 수 초내 롤백이 가능하고 
@@ -265,17 +165,42 @@ layout: default
 헤더 기반으로 트레픽 제어할 경우 프로덕션 환경에서 이팩트 없는 live 검증을 할 수 있다
 -->
 
+
+
 ---
-layout: default
+layout: image-right
+image: ./images/page-3-img.png
+backgroundSize: contain
 ---
 
-# Chii 원격 디버깅 툴
+# 🔧 디버깅 환경의 복잡성
+- **디바이스별 다른 방법** <br> IVI, TV 디바이스마다 제조사/버전별 다른 디버깅
+- **준비 시간 과다** <br> 디버깅 설정에 10-30분 소요
+- **저사양 디바이스 한계** <br> 디버깅 중 속도저하 및 프리징 발생
 
-## 🚀 주요 기능
+<span v-mark.underline.orange class="absolute bottom-85px right-430px">ㅤㅤㅤㅤ</span>
 
-- **웹 기반 인터페이스**: 브라우저에서 디바이스 목록 페이지에서 <span v-mark.underline.orange>바로 접속 </span>
-- **원격 제어**: <span v-mark.underline.orange>디바이스 조작 및 테스트</span>
-- **크로스 플랫폼**: 모든 디바이스에서 <span v-mark.underline.orange>동일한 디버깅 경험</span>
+---
+layout: image-right
+image: ./images/page-6-img.png
+backgroundSize: contain
+---
+
+<style scoped>
+  .slidev-page > div {
+    overflow: visible;
+    white-space: nowrap;
+  }
+</style>
+
+# 🐛 Chii 원격 디버깅 툴 적용
+
+## 주요 기능 및 효과
+
+- **디바이스 전환** <br> 디바이스 목록 페이지에서 디버깅 <span v-mark.underline.orange>바로 접속 및 전환</span>
+- **원격 제어** <br> 디버깅에서 <span v-mark.underline.orange>디바이스 조작 및 테스트</span>
+- **같은 환경** <br> 브라우저 개발자 도구와 <span v-mark.underline.orange>같은 디버깅 방법</span>
+- **크로스 플랫폼** <br> 모든 디바이스에서 <span v-mark.underline.orange>동일한 최신 버전 디버깅 경험</span>
 
 <!--
 IVI 와 TV 디바이스마다 긴 디버깅 준비 시간 / 복잡하고  각각 다른 디버깅 방법 / 디버깅 런타임 성능 / 제공되는 디버거 버전이 달라서  등 디버깅 과정이 고통 스러웠다
@@ -293,9 +218,9 @@ layout: default
 
 # Chii 원격 디버깅 툴
 
-## 적용 사항 
+## 적용 방법
 
-- 별도작업 없이 늘 작동하는 디버깅 <br> QA / DEV 가 아닌 Production 환경에서는 자동으로 디버깅용 스크립트가 제거
+- QA / DEV 가 아닌 Production 환경에서는 자동으로 디버깅용 스크립트가 제거
 
 ```ts {*|1|6}
   createHtmlPlugin({
@@ -355,34 +280,69 @@ layout: default
 
 # Chii 원격 디버깅 툴
 
-## 🎯 적용 결과
-
-| 항목 | 기존 | 개선 후
-|------|------|---------|
-| 디버깅 설정 시간 | 10-30분 | 10초 |
-| 디버깅 디바이스 전환 속도 | 10-30분 | 3초 |
-| 디버깅 같은 방법 갯수  | 1 / 10 | 10 / 10 |
-| 디버깅 성능 저하 갯수 | 2 / 10 | 0 / 10 |
-| 디버깅 가능 디바이스 목록 | X | O |
-
----
-layout: default
----
-
-# Chii 원격 디버깅 툴
-
 ## 추가 개선 사항
 
 - IOS, Android webview 적용
 - Chii 버전 자동 업데이트 기능
 
+
+---
+layout: image-right
+image: ./images/page-4-img.png
+backgroundSize: contain
+---
+
+# 📝 코드 리뷰 비효율성
+- **리뷰 시간 과다**: GitLab MR 리뷰에 수십분 소요
+- **누락 발생**: 리뷰에서 체크 못한 부분들 빈번
+- **일관성 부족**: 리뷰어별 기준 차이
+
+<span v-mark.underline.orange class="absolute bottom-57px right-270px">ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ</span>
+
+---
+layout: image-right
+image: ./images/page-7-img.png
+backgroundSize: 26em 26em
+---
+
+<style scoped>
+  .slidev-page > div {
+    overflow: visible;
+    white-space: nowrap;
+  }
+</style>
+
+# 🤖 Cursor CLI x GitLab CI/CD
+
+## 개선 목표
+
+- dev 브랜치 MR 에 의한 **자동화된 코드 요약 / 리뷰**
+- **요약을 MR 메세지로 작성**
+- 리뷰 **코드의 위치**를 표기하고 **MR 리뷰 작성**
+
+<div class="absolute bottom-100px left-100px flex gap-4 items-center" v-motion
+    :initial="{ opacity: 0, y: 100 }"
+    :enter="{ opacity: 1, y: 0, scale: 1 }"
+    :variants="{ custom: { scale: 2 } }"
+    :hovered="{ scale: 1.2 }"
+    :delay="200"
+    :duration="1200"
+ >
+  <img src="/images/page-6-5-img.png" class="w-100px h-100px rd-7 rotate--5 shadow-xl">
+  <span class="text-size-10">X</span>
+  <img src="/images/page-6-6-img.png" class="w-100px h-100px rd-7 rotate-5 shadow-xl">
+</div>
+
+<span v-mark.underline.orange class="absolute bottom-165px left-550px">ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ</span>
+
+
 ---
 layout: default
 ---
 
-# Cursor CLI x GitLab CI/CD
+# 🤖 Cursor CLI x GitLab CI/CD
 
-## 🤔 왜 Cursor CLI ?
+## 그런데 🤔 왜 Cursor CLI ?
 
 Model 이 `auto` 면 <span v-mark.underline.orange> 무제한 </span>  사용 가능
 
@@ -394,9 +354,11 @@ Model 이 `auto` 면 <span v-mark.underline.orange> 무제한 </span>  사용 �
 layout: default
 ---
 
-# Cursor CLI x GitLab CI/CD
+# 🤖 gitlab.yml Job 구현 작업
 
 ### 커서에게 프롬프트 전달
+
+.gitalb-ci.yml
 ````md magic-move {lines: true}
 
 ```yaml {*}
@@ -440,10 +402,8 @@ $CI_MERGE_REQUEST_IID 등은 gitlab CI/CD 내장 변수 이거나 직접 변수�
 
 ---
 
-# Cursor CLI x GitLab CI/CD
-
-### 만들어진 내용 MR에 작성
-```yaml {2|3-8|9-13}
+#  🤖 만들어진 내용 MR에 작성 스크립트 추가
+```yaml {*|2|3-8|9-13}
 script:
   - cursor-agent -p ..."
    # MR에 리뷰 작성 
@@ -468,9 +428,7 @@ script:
 layout: default
 ---
 
-# Cursor CLI x GitLab CI/CD
-
-### 추가로 프롬프트에 JSON 포맷을 전달
+# 🤖 추가로 프롬프트에 JSON 포맷을 전달
 
 ```text
 JSON 포맷은 아래 형태로 작성 한다
@@ -493,9 +451,7 @@ JSON 포맷은 아래 형태로 작성 한다
 layout: default
 ---
 
-# Cursor CLI x GitLab CI/CD
-
-### 프롬프트 매개변수 길이 문제
+# 🤖 프롬프트 매개변수 길이 문제 발생
 ````md magic-move {lines: true}
 
 ```yml {0|*}
@@ -525,11 +481,9 @@ diff 내용은 상당히 길어 Cursor cli 매개 변수 길이 제한에 걸린
 layout: default
 ---
 
-# Cursor CLI x GitLab CI/CD
+# 🤖 라인 번호를 잘 알려주지 못하는 문제
 
-### 라인 번호를 잘 알려주지 못하는 문제
-
-```text {0|*}
+```text
 Rules:
 - Base on +newStart in the hunk header.
 - Initialize currentLine = newStart.
@@ -552,9 +506,7 @@ Rules:
 layout: default
 ---
 
-# Cursor CLI x GitLab CI/CD
-
-### 그럼에도 불구하고 라인번호를 잘못 적을 경우
+#  🤖 그럼에도 불구하고 라인번호를 잘못 적을 경우
 
 <span>post-discussion.ts</span>
 ```ts {*|0}{at:0}
@@ -580,9 +532,7 @@ function retryDiscussionWithFileInfo (payload) { ...
 layout: default
 ---
 
-# Cursor CLI x GitLab CI/CD
-
-### 프롬프트가 너무 길어 yml 파일 가독성 문제
+# 🤖 프롬프트가 너무 길어 yml 파일 가독성 문제
 
 ````md magic-move {lines: true}
 ```yml {0|*}
@@ -614,9 +564,7 @@ layout: default
 layout: default
 ---
 
-# Cursor CLI x GitLab CI/CD
-
-### 적용된 화면
+# 🤖적용된 화면
 
 <div class="overflow-scroll w-full h-full">
   <img src="/images/page-14-img.png" class="w-140% max-w-140%" />
@@ -626,10 +574,7 @@ layout: default
 layout: default
 ---
 
-
-# Cursor CLI x GitLab CI/CD
-
-## 👮 보안 
+# 🤖 AI 👮 보안 
 
 - AI는 생각지도 못한 명령을 실행 할 수도 있다
 - 토큰에 지정된 Api 사용 권한은 GitLab 에서 할수 있는 대부분 작업이 가능
@@ -641,9 +586,7 @@ AI 가 치명적인 명령으로 문제를 만들 수 있기때문에 할 수 �
 
 ---
 
-# Cursor CLI x GitLab CI/CD
-
-#### Cursor 가 사용할 수 있는 명령을 권한을 제어하여 보안 적용
+# 🤖 Cursor 가 사용할 수 있는 명령을 권한을 제어하여 보안 적용
 
 ```json
 {
@@ -668,24 +611,7 @@ AI 가 치명적인 명령으로 문제를 만들 수 있기때문에 할 수 �
 layout: default
 ---
 
-# Cursor CLI x GitLab CI/CD
-
-## 📊 적용 결과
-
-| 항목 | 기존 | 개선 후 |
-|------|------|---------|
-| 리뷰 시간 | 10-30분 | 5분 |
-| 리뷰 일관성 | 50% | 80% |
-| 버그 발견률 | 50% | 80% |
-
-
----
-layout: default
----
-
-# Cursor CLI x GitLab CI/CD
-
-## 추가 개선 사항
+# 🤖 추가 개선 사항
 
 - **응답 시간** 타임 아웃
 - 도커 이미지 최적화
@@ -698,10 +624,11 @@ class: slidev-layout
 # 감사합니다
 
 ## 질문이 있으시면 언제든 말씀해 주세요
-
-### 연락처
 - **이메일**: bichi@wavve.com
 
+### 퀴즈
+- 제가 cursor cli tool 을 코드 리뷰 툴로 사용한 이유는 무엇 일까요?
+
 ### 추가 자료
-- **이 슬라이드** <br>
+- **이 슬라이드 링크** <br>
 <QrCode value="https://deploy-chronicles.vercel.app" size="200" />
