@@ -13,7 +13,7 @@ mdc: true
     font-family: "Noto Sans KR", "Pretendard Variable", sans-serif;
   }
   li, span {
-    color: #f5f5f5;
+    --uno: 'dark:text-#f5f5f5';
     font-weight: 400;
   }
   .slidev-layout strong {
@@ -26,7 +26,7 @@ mdc: true
     line-height: 3rem;
   }
   strong, h1, h2, h3, h4, h5 {
-    color: white
+    --uno: 'dark:text-white';
   }
   .slidev-code-wrapper span {
     font-size: 1.3rem;
@@ -171,9 +171,9 @@ backgroundSize: contain
     :delay="200"
     :duration="1200"
  >
-  <img src="/images/page-6-5-img.png" class="w-100px h-100px rotate--5">
+  <img src="/images/page-6-5-img.png" class="w-100px h-100px rd-7 rotate--5 shadow-xl">
   <span class="text-size-10">X</span>
-  <img src="/images/page-6-6-img.png" class="w-100px h-100px rd-5 rotate-5">
+  <img src="/images/page-6-6-img.png" class="w-100px h-100px rd-7 rotate-5 shadow-xl">
 </div>
 
 <span v-mark.underline.orange class="absolute bottom-165px left-550px">ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ</span>
