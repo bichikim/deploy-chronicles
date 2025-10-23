@@ -55,7 +55,7 @@ qacode 를 찍어서 내용을 잘 보실수 있습니다
 layout: cover
 ---
 
-# 배포 프로세스 ~~행복~~ 효율 문제
+# 배포 프로세스 효율  문제
 햄뽂 할 수 가 없다
 
 <img src="/images/page-2-1-img.png" class="absolute w-350px bottom-20px right-50px rd-5" />
