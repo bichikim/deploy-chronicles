@@ -579,6 +579,8 @@ layout: default
 - AI는 생각지도 못한 명령을 실행 할 수도 있다
 - 토큰에 지정된 Api 사용 권한은 GitLab 에서 할수 있는 대부분 작업이 가능
 
+<img v-click src="/images/page-15-img.png" class="absolute w-250px left-65% top-20%" />
+
 <!--
 API 권한은 만능 권한 mr 삭제, 프로젝트 삭제 등 모든 권한이 다있다
 AI 가 치명적인 명령으로 문제를 만들 수 있기때문에 할 수 있는 일에 제약을 두어야 한다
@@ -632,3 +634,4 @@ class: slidev-layout
 ### 추가 자료
 - **이 슬라이드 링크** <br>
 <QrCode value="https://deploy-chronicles.vercel.app" size="200" />
+<img src="/images/page-10-1-img.gif" class="absolute right-18% bottom-1% h-210px" />
