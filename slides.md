@@ -1,6 +1,6 @@
 ---
 theme: default
-title: 배포 프로세스 개선
+title: 웹 프론트 배포 프로세스 개선
 backgroundSize: right top
 mdc: true
 ---
@@ -34,10 +34,11 @@ mdc: true
   }
 </style>
 
-# 배포 프로세스 개선
+# 웹 프론트 배포 프로세스 개선
+<div class="text-left pr-6">웨이브 웹개발팀 김비치</div>
 
 <div class="w-full flex justify-end items-end gap-5">
-  <span class="font-size-6">이 프레젠테이션 문서 주소 --></span>
+  <span class="font-size-4">이 프레젠테이션 문서 주소 --></span>
   <QrCode value="https://deploy-chronicles.vercel.app" size="240" />
 </div>
 
@@ -52,14 +53,62 @@ qacode 를 통해 이 프리젠테이션 내용을 보실수 있습니다
 -->
 
 ---
+layout: center
+---
+
+# index.ts
+
+```ts
+const MAX_PRESENTATION_TIME = 15 * 60
+
+const currentCICDIssue = [
+    '배포 위험 이슈', 
+    '디버깅 이슈', 
+    '코드 리뷰 이슈'
+    ]
+for (const issue of currentCICDIssue) {
+  check(issue)
+  resolve(issue)
+}
+if(currentPresentationTime < MAX_PRESENTATION_TIME) {
+  qna()
+}
+return
+```
+
+
+---
 layout: cover
 ---
 
-# 배포 프로세스 효율  문제
+# 왜 이슈는 항상 배포 한뒤에 발견할까?
 
-햄뽂 할 수 가 없다
+- 배포 위험도 이슈
 
-<img src="/images/page-2-1-img.png" class="absolute w-350px bottom-20px right-50px rd-5" />
+(난 왜 햄뽂 할 수 가 없는가)
+
+<div
+  class="absolute bottom-0 right-0 cursor-pointer transition-transform duration-400"
+  style="z-index: -1; width: 720px; height: auto; pointer-events: none; position: absolute;"
+>
+  <img
+    src="/images/page-2-1-img.png"
+    style="width: 720px; display: block;"
+  />
+  <!-- 좌 -> 우 그리고 위 -> 아래 투명도 그라데이션 두 개 겹치기 -->
+  <div
+    style="
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background:
+        linear-gradient(to right, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%),
+        linear-gradient(to bottom, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%);
+      mix-blend-mode: destination-out;
+    "
+  ></div>
+</div>
+
 
 <!--
 저는 대부분 업무에 개선의 여지가 있다고 생각합니다 
@@ -76,7 +125,7 @@ image: /images/page-2-img.png
 backgroundSize: contain
 ---
 
-# 🚀 배포 위험도 관리
+# 🚀 배포 위험도 이슈
 - **QA vs Production** <br> 드물게 미묘한 환경 차이로 QA에서 발견 못한 이슈
 - **전체 사용자 영향** <br> 이슈 발생 시 모든 고객에게 100% 적용
 - **롤백 지연** <br> 더 빠른 롤백 시간으로 피해 최소화 필요
@@ -101,6 +150,17 @@ QA 과 Production 을 최대한 비슷한 환경을 재현 했지만 미묘한 �
 1:02 에서 최종 메세지 적은 시간은 1:05분 메세지 적는 시간 포함 3분 걸렸네요 휴먼치고 상당히 빨랐네요
 
 -->
+
+<div
+  style="
+    width: 490px;
+    height: 100%;
+    background: #1a1d21;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    z-index: -2;"
+></div>
 
 ---
 layout: image-right
@@ -199,7 +259,17 @@ layout: default
 가중치 기반은 production staging 배포된 버전 사용자로 지정된 고객의 세션 유지 시간이 최대 1시간이라 세션 만료 후 고객이 이전 production 리소스를 가져와서 오작동 할 가능 성이 있습니다
 -->
 
+---
+layout: cover
+---
 
+# 디버깅이 안되면 어떻게 이슈를 해결하죠?
+
+- 디버깅 이슈
+
+<div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none;">
+  <img src="/images/page_x-background.jpg" style="width: 100%; height: 100%; object-fit: cover; opacity: 0.3;" />
+</div>
 
 ---
 layout: image-right
@@ -353,6 +423,15 @@ IOS, Android webview 에도 적용할 예정 입니다
 지금은 Chii 버전이 서비스 중인 Chii 가 다시 배포 하기 전까지는 업데이트가 안되는데 
 주기적으로 버전 확인을 해서  Chii 버전 자동 업데이트 기능을 추가할 예정 입니다
 -->
+
+---
+layout: cover
+---
+
+# 바빠서 코드 리뷰 할 시간이 없어요!
+
+- 코드 리뷰 이슈
+
 
 ---
 layout: image-right
@@ -679,6 +758,13 @@ layout: default
   <img src="/images/page-14-img.png" class="w-140% max-w-140%" />
 </div>
 
+---
+layout: default
+---
+<!-- good_cursor.jpg 이미지 삽입-->
+<div class="flex flex-col items-center justify-center w-full h-full">
+  <img src="/images/good_cursor.jpg" alt="Good Cursor" class="w-full h-full" />
+</div>
 ---
 layout: default
 ---
