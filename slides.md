@@ -35,7 +35,7 @@ mdc: true
 </style>
 
 # 웹 프론트 배포 프로세스 개선
-<div class="text-left pr-6">웨이브 웹개발팀 김비치</div>
+<span>웹개발팀 김비치</span>
 
 <div class="w-full flex justify-end items-end gap-5">
   <span class="font-size-4">이 프레젠테이션 문서 주소 --></span>
