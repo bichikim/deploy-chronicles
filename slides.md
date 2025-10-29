@@ -56,15 +56,22 @@ qacode 를 통해 이 프리젠테이션 내용을 보실수 있습니다
 layout: center
 ---
 
+<style scoped>
+  code > .line:nth-child(n+4):nth-child(-n+6) > span:nth-child(2) {
+    font-size: 2.5rem;
+    line-height: 3rem;
+  }
+</style>
+
 # index.ts
 
 ```ts
-const MAX_PRESENTATION_TIME = 15 * 60
+const MAX_PRESENTATION_TIME = 15 * 60 * 1000
 
 const currentCICDIssue = [
-    '배포 위험 이슈', 
-    '디버깅 이슈', 
-    '코드 리뷰 이슈'
+    '배포 위험 문제', 
+    '디바이스 디버깅 불편', 
+    '코드 리뷰 퀠리티 및 속도 병목'
     ]
 for (const issue of currentCICDIssue) {
   check(issue)
@@ -76,44 +83,23 @@ if(currentPresentationTime < MAX_PRESENTATION_TIME) {
 return
 ```
 
+<!--
+개선ㅇ
+-->
 
 ---
 layout: cover
 ---
 
-# 왜 이슈는 항상 배포 한뒤에 발견할까?
-
-- 배포 위험도 이슈
-
-(난 왜 햄뽂 할 수 가 없는가)
-
-<div
-  class="absolute bottom-0 right-0 cursor-pointer transition-transform duration-400"
-  style="z-index: -1; width: 720px; height: auto; pointer-events: none; position: absolute;"
->
-  <img
-    src="/images/page-2-1-img.png"
-    style="width: 720px; display: block;"
-  />
-  <!-- 좌 -> 우 그리고 위 -> 아래 투명도 그라데이션 두 개 겹치기 -->
-  <div
-    style="
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-      background:
-        linear-gradient(to right, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%),
-        linear-gradient(to bottom, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%);
-      mix-blend-mode: destination-out;
-    "
-  ></div>
-</div>
+#  🚀 배포 위험도 이슈
+햄뽂 할 수 가 없다
+<img src="/images/page-2-1-img.png" class="absolute w-350px bottom-20px right-50px rd-5" />
 
 
 <!--
 저는 대부분 업무에 개선의 여지가 있다고 생각합니다 
 
-그 중 배포 과정에서 "배포 후 위험도 관리 / 디버깅 / 리뷰" 에 개선이 필요하다고 생각 합니다 
+그 중 배포 과정에서 "배포 후 위험도 관리" 에 개선이 필요하다고 생각 했습니다
 
 한번이라도 행복해 보고 싶었습니다 :) 
 
@@ -263,13 +249,7 @@ layout: default
 layout: cover
 ---
 
-# 디버깅이 안되면 어떻게 이슈를 해결하죠?
-
-- 디버깅 이슈
-
-<div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none;">
-  <img src="/images/page_x-background.jpg" style="width: 100%; height: 100%; object-fit: cover; opacity: 0.3;" />
-</div>
+# 🔧 디버깅 환경의 복잡성
 
 ---
 layout: image-right
@@ -428,9 +408,7 @@ IOS, Android webview 에도 적용할 예정 입니다
 layout: cover
 ---
 
-# 바빠서 코드 리뷰 할 시간이 없어요!
-
-- 코드 리뷰 이슈
+# 📝 코드 리뷰 비효율성
 
 
 ---
