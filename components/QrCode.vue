@@ -14,9 +14,13 @@ defineProps({
         type: String,
         default: 'L',
     },
+    labelSize: {
+        type: Number,
+        default: 50,
+    },
 })
 </script>
 
 <template>
-    <QrcodeVue :value="value" :size="size" :image-settings="{width: 50, height: 50, src: '/images/wavve.png', excavate: true}" />
+    <QrcodeVue :value="value" :size="size" :image-settings="{width: labelSize, height: labelSize, src: '/images/wavve.png', excavate: true}" />
 </template>

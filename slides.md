@@ -843,10 +843,9 @@ class: slidev-layout
 ### 퀴즈
 - Cursor Cli tool 을 코드 리뷰 툴로 사용한 이유는 무엇 일까요?
 
-### 추가 자료
-- **이 슬라이드 링크** <br>
-<QrCode value="https://deploy-chronicles.vercel.app" size="200" />
-<img src="/images/page-10-1-img.gif" class="absolute right-18% bottom-1% h-210px" />
+### 이 슬라이드 링크 <br>
+<QrCode value="https://deploy-chronicles.vercel.app" size="200" labelSize="20" />
+<img src="/images/page-10-1-img.gif" class="absolute right-17% bottom-6.8% h-210px" />
 
 <!-- 
 
